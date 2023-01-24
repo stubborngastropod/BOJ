@@ -5,13 +5,11 @@ land = []
 
 for i in range(N):
     block = list(map(int, sys.stdin.readline().split()))
-    land = land + block
+    land += block
 
-max_height = max(land)
-min_height = min(land)
 shortest_time = 64000000
 
-for i in range(min_height, max_height + 1):
+for i in range(min(land), max(land) + 1):
     spendtime = 0
     spendblock = 0
     for j in land:
