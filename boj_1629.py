@@ -1,16 +1,11 @@
 A, B, C = map(int, input().split())
-a = A
-b = B
 
-while True:
+def rest(a,b,c):
     if b == 1:
-        a = a % C
-        break
-    elif b % 2 == 0:
-        a = (a * a) % C
-        b = b // 2
+        return a ** b % c
     elif b % 2 == 1:
-        a = ((a * a) * A) % C
-        b = b // 2
+        return (rest(a, (b-1)//2, c)) ** 2 * a % c
+    else:
+        return (rest(a, b//2, c)) ** 2 % c
 
-print(a)
+print(rest(A, B, C))
