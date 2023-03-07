@@ -1,7 +1,7 @@
 from collections import deque
 import sys
 input = sys.stdin.readline
-
+# 톱니바퀴 회전
 def rotate(n):
     if direction == 1:
         gears[n].appendleft(gears[n].pop())
@@ -12,7 +12,7 @@ gears = [0] + [deque(list(map(int, input().strip()))) for _ in range(4)]
 K = int(input())
 for i in range(K):
     gear_num, direction = map(int, input().split())
-
+    # direction 체크하면서 양 옆 톱니바퀴로 퍼져나가기
     if gear_num == 1:
         if gears[1][2] != gears[2][6]:
             if gears[2][2] != gears[3][6]:

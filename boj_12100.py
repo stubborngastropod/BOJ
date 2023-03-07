@@ -7,25 +7,25 @@ ans = 0
 
 def up(board):
     global ans
-    new = [[0] * N for _ in range(N)]
+    new = [[0] * N for _ in range(N)] # 바뀔 보드
     for i in range(N):
         cnt = 0
         for j in range(N):
-            if board[j][i] and cnt % 2:
-                if new[cnt // 2][i] == board[j][i]:
+            if board[j][i] and cnt % 2: # 블록을 발견했고 합칠 블록이 있을 때
+                if new[cnt // 2][i] == board[j][i]: # 같은 수면 합침
                     new[cnt // 2][i] += board[j][i]
-                    if new[cnt // 2][i] > ans:
+                    if new[cnt // 2][i] > ans: # 만약 합친 블록의 숫자가 최대이면 정답 갱신
                         ans = new[cnt // 2][i]
                     cnt += 1
-                else:
+                else: # 다른 수면 합칠 블록을 갱신
                     cnt += 1
                     new[cnt // 2][i] = board[j][i]
                     if new[cnt // 2][i] > ans:
                         ans = new[cnt // 2][i]
                     cnt += 1
-            elif board[j][i] and not cnt % 2:
-                new[cnt // 2][i] = board[j][i]
-                if new[cnt // 2][i] > ans:
+            elif board[j][i] and not cnt % 2: # 블록을 발견했고 합칠 블록이 없을 때
+                new[cnt // 2][i] = board[j][i] # 합칠 블록으로 올려둠
+                if new[cnt // 2][i] > ans: # 만약 올려둔 블록의 숫자가 최대이면 정답 갱신
                     ans = new[cnt // 2][i]
                 cnt += 1
     return new
